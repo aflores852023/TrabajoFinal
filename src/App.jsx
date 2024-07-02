@@ -2,28 +2,21 @@ import React from 'react'
 import {nombre, persona} from './funciones' 
 import {Button} from './components/Boton' 
 import RowArticule from './components/RowArticule'
-import sumar from './Variables'
+import sumar, { restar } from './Variables'
 
-console.log(persona)
+
+/* console.log(persona) */
 let nombreUsuario = 'Julieta'
-sumar
 
+console.log(sumar(1,100))
+console.log(restar(5,1))
 function App() {
+
   return (
+    
    <div>
     <div> 
-      <h1>Hola usuario/a : {nombreUsuario}</h1>
-      <Button texto={'bonton 1 crear cuenta'}/>
-      <Carta/>  
-    </div>
-    
-    <div> 
-      <Button texto={'bonton 2 agregar a favoritos'}/>
-      <Carta/>  
-    </div>
-
-    <div> 
-      Comienzo Practica clase 22
+      Comienzo Practica clase 21
       <RowArticule 
       titulo={'Liff-off:The MDN Curriculum Launch'} 
       fecha={'4 months ago'} 
@@ -40,6 +33,7 @@ function App() {
       direccion_author={'developer.mozilla.org'}
       />
       
+
     </div>
 
   </div>
