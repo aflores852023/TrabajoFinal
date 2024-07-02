@@ -1,8 +1,9 @@
 import React from "react"
 
-export const Button = () => {  
+export const Button = (props) => {  
+  console.log(props)
     return (
-      <button>Click</button>
+      <button>{props.texto}</button>
     )
   }
 
