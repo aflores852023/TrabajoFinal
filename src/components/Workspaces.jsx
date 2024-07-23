@@ -5,3 +5,13 @@ Creación de Workspaces: Los usuarios pueden crear nuevos espacios de trabajo pa
  */
 
 import React from 'react'
+
+import React from 'react'
+
+const Workspaces = () => {
+  return (
+    <div>Workspaces</div>
+  )
+}
+
+export default Workspaces

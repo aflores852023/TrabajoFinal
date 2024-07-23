@@ -6,3 +6,13 @@ Canales Privados: Solo accesibles para los miembros invitados.
 Canales Temáticos: Utilizados para discusiones específicas sobre proyectos, equipos, o temas. */
 
 import React from 'react'
+
+import React from 'react'
+
+const Channels = () => {
+  return (
+    <div>Channels</div>
+  )
+}
+
+export default Channels
