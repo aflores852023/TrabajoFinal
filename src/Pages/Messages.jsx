@@ -1,6 +1,3 @@
-/*  donde ocurre la mayor parte de la comunicación. */
-
-import React from 'react'
 import React from 'react'
 
 const Messages = () => {

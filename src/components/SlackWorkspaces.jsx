@@ -3,15 +3,14 @@ Un workspace en Slack es un entorno colaborativo que contiene todos los canales,
 Funcionalidades:
 Creación de Workspaces: Los usuarios pueden crear nuevos espacios de trabajo para diferentes equipos o proyectos.
  */
-
 import React from 'react'
 
-import React from 'react'
-
-const Workspaces = () => {
+const SlackWorkspaces = () => {
   return (
-    <div>Workspaces</div>
+    <div>
+    <span>¡Hola otra vez!</span>
+    </div>
   )
 }
 
-export default Workspaces
+export default SlackWorkspaces

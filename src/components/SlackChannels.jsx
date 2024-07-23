@@ -7,12 +7,10 @@ Canales Temáticos: Utilizados para discusiones específicas sobre proyectos, eq
 
 import React from 'react'
 
-import React from 'react'
-
-const Channels = () => {
+const SlackChannels = () => {
   return (
-    <div>Channels</div>
+    <div>SlackChannels</div>
   )
 }
 
-export default Channels
+export default SlackChannels

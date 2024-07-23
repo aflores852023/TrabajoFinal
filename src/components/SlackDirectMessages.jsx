@@ -7,12 +7,12 @@ Mensajes Directos en Grupo: Conversaciones entre múltiples miembros. */
 
 
 import React from 'react'
-import React from 'react'
 
-const DirectMessages = () => {
+
+const SlackDirectMessages = () => {
   return (
-    <div>DirectMessages</div>
+    <div>SlackDirectMessages</div>
   )
 }
 
-export default DirectMessages
+export default SlackDirectMessages
