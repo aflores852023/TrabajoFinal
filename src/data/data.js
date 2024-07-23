@@ -28,7 +28,9 @@ const users = [
   export { users, workspaces, channels, messages };
   
 
-  /* Usuarios (users): Cada usuario tiene un id, username, avatar (una URL a su imagen de perfil) y un status (estado del usuario).
+  /* 
+Se cargan cuando inicia la pagina y permanecen durante toda la sesión.
+Usuarios (users): Cada usuario tiene un id, username, avatar (una URL a su imagen de perfil) y un status (estado del usuario).
 Workspaces (workspaces): Cada workspace tiene un id, un name y una lista de members que son los id de los usuarios que pertenecen a ese workspace.
 Canales (channels): Cada canal tiene un id, un name y un workspaceId que indica a qué workspace pertenece.
 Mensajes (messages): Cada mensaje tiene un id, text (el contenido del mensaje), senderId (el id del usuario que envió el mensaje), 
