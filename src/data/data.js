@@ -25,7 +25,7 @@ const users = [
     { id: 5, text: 'I am working on the backend now.', senderId: 1, channelId: 3, timestamp: new Date() },
   ];
   
-  export { users, workspaces, channels, messages };
+  export default { users, workspaces, channels, messages };
   
 
   /* 
