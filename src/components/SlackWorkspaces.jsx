@@ -5,17 +5,22 @@ Creación de Workspaces: Los usuarios pueden crear nuevos espacios de trabajo pa
  */
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importa el componente Link
+import { workspaces } from '../data/data';
 
 const SlackWorkspaces = ({ workspace }) => {
-  const { name, members, id } = workspace;
+  const { id, name, members } = workspace
+  const getWorkspacesForId = (id) => {
+  workspaces
+  }
 
   return (
     <div>
       <span> {name} </span>
-      <Link to={`/workspaces/${id}`}>
+      <Link to={'/WorkspacesDetails/'+id}>
         <button> Entrar </button>
       </Link>
-    </div>
+     
+     </div>
   );
 };
 

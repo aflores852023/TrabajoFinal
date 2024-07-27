@@ -1,5 +1,4 @@
-import { saveTestDataWorkspaces } from '../helpers/testdata'
-
+import { workspaces } from '../data/data.js'
 /**
  * Recupera la lista de espacios de trabajo desde el almacenamiento local. 
  * Si ya se han guardado los espacios de trabajo,
@@ -14,3 +13,7 @@ export const getWorkspaces = () => {
                 return JSON.parse(workspaces_saved)   
        }
  }
+
+ export const getWorkspacesForId =(id) => {
+    return workspaces.find(workspace => Number(workspace.id) === Number(id))
+  }

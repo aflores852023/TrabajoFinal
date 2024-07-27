@@ -1,2 +1,4 @@
-import  Workspaces  from "../components/Workspaces";
-export { Workspaces }
+
+import  SlacWorkspacesList  from "../components/SlackWorkspacesList"; // src\components\SlackWorkspacesList.jsx
+    
+export { SlacWorkspacesList } 

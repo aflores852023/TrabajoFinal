@@ -5,6 +5,7 @@ import Channels from './Pages/Channels'
 import DirectMessages from './Pages/DirectMessages'
 import Messages from './Pages/Messages'
 import Home from './Pages/Home'
+import WorkspacesDetails from './Pages/WorkspacesDetails'
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
       <Route path='/' element={
         <Home/>
       }/>
-      <Route path='/Workspaces' element={
+      <Route path='/Workspaces/:workspace_id' element={
         <Workspaces/>
       }/>
 
@@ -30,6 +31,11 @@ function App() {
       <Route path ='/Messages' element={
         <Messages/>
       }/>
+
+      <Route path = '/WorkspacesDetails/:workspace_id' element={
+        <WorkspacesDetails/>
+      }/>
+
     </Routes>
   )
  
