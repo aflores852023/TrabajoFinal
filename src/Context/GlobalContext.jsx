@@ -4,12 +4,12 @@ const GlobalContextWorkspaces = createContext();
 
 export const GlobalContextProvider = ({ children }) => {
     return (
-        <GlobalContext.Provider
+        <GlobalContextWorkspaces.Provider
             value={{}}>{children}
-        </GlobalContext.Provider>
+        </GlobalContextWorkspaces.Provider>
     );
 };
 
-export const useGlobalContext = () => 
+export const useGlobalContextWorkspaces = () => 
     useContext(GlobalContextWorkspaces)
 
