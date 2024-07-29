@@ -1,28 +1,16 @@
-import { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from 'react';
+import { workspaces } from '../data/data'; // src\data\data.js
 
-const GlobalContextWorkspaces = createContext();
+const GlobalContext = createContext();
 
-
-/**
- * Crea un proveedor de contexto para el contexto GlobalContextWorkspaces.
- *
- * @param {Object} props - El objeto de props.
- * @param {ReactNode} props.children - Los componentes hijos a renderizar dentro del contexto.
- * @return {ReactElement} El componente del proveedor de contexto.
- */
 export const GlobalContextProvider = ({ children }) => {
-    return (
-        <GlobalContextWorkspaces.Provider
-            value={{}}>{children}
-        </GlobalContextWorkspaces.Provider>
-    );
+  const [contextWorkspaces, setContextWorkspaces] = useState(workspaces);
+
+  return (
+    <GlobalContext.Provider value={{ workspaces: contextWorkspaces, setContextWorkspaces }}>
+      {children}
+    </GlobalContext.Provider>
+  );
 };
 
-/**
- * Devuelve el valor del contexto GlobalContextWorkspaces.
- *
- * @return {Object} El valor del contexto GlobalContextWorkspaces.
- */
-export const useGlobalContextWorkspaces = () => 
-    useContext(GlobalContextWorkspaces)
-
+export const useGlobalContextWorkspaces = () => useContext(GlobalContext);
