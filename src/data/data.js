@@ -29,5 +29,12 @@ export const users = [
     { id: 4, text: 'We need to finish the design by Friday.', senderId: 4, channelId: 4, timestamp: new Date() },
     { id: 5, text: 'I am working on the backend now.', senderId: 1, channelId: 5, timestamp: new Date() },
   ];
+  export const directMessages = [
+    { id: 1, text: 'Hello, everyone!', senderId: 1, channelId: 1, timestamp: new Date() },
+    { id: 2, text: 'Hi Alice!', senderId: 2, channelId: 1, timestamp: new Date() },
+    { id: 3, text: 'How is the project going?', senderId: 3, channelId: 3, timestamp: new Date() },
+    { id: 4, text: 'We need to finish the design by Friday.', senderId: 4, channelId: 4, timestamp: new Date() },
+    { id: 5, text: 'I am working on the backend now.', senderId: 1, channelId: 5, timestamp: new Date() },
+  ];
   
 

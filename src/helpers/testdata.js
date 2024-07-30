@@ -56,3 +56,15 @@ export const saveTestDataDirectMessages = (directMessages) => {
     const directMessages_to_json = JSON.stringify(directMessages);
     localStorage.setItem('directMessages', directMessages_to_json);
 }  
+
+
+/**
+ * Crea datos de prueba de workspaces agregando nuevos workspaces a la lista existente de workspaces.
+ *
+ * @param {Array} NewWorkspaces - Un array de nuevos workspaces que se agregarán a la lista existente de workspaces.
+ * @return {void} Esta función no devuelve un valor.
+ */
+export const createTestDataWorkspaces = (NewWorskspaces) => {
+    const workspaces = [ ...workspaces, ...NewWorskspaces ];
+    saveTestDataWorkspaces(workspaces);
+}   

@@ -7,8 +7,15 @@ import Messages from './Pages/Messages'
 import Home from './Pages/Home'
 import WorkspacesDetails from './Pages/WorkspacesDetails'
 import ChannelDetails from './Pages/ChannelDetails'
-
+import { saveTestDataWorkspaces, saveTestDataMessages, saveTestDataChannels, saveTestDataUsers, saveTestDataDirectMessages } from './helpers/testdata'
+import { users, workspaces, channels, messages, directMessages } from '../src/data/data.js'
 function App() {
+
+  saveTestDataWorkspaces(workspaces) // inicializa los datos de los espacios de trabajo
+  saveTestDataMessages(messages) // inicializa los datos de los mensajes
+  saveTestDataChannels(channels) // inicializa los datos de los canales
+  saveTestDataUsers(users) // inicializa los datos de los usuarios
+  saveTestDataDirectMessages(directMessages) // inicializa los datos de los mensajes directos
 
 
   return (

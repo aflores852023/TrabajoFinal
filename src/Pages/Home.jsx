@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { workspaces } from '../data/data'; // src\data\data.js
+import { getWorkspaces } from '../helpers/workspaces'; // src\helpers\workspaces.js
 import SlackWorkspacesList from '../components/SlackWorkspacesList'; // src\components\SlackWorkspacesList.jsx
 import { useGlobalContextWorkspaces } from '../Context/GlobalContext';
 
 const Home = () => {
+  const workspaces = getWorkspaces();
   const { workspaces: contextWorkspaces } = useGlobalContextWorkspaces(); // Extrae workspaces del contexto
 
 
