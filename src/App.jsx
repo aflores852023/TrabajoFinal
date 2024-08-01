@@ -9,6 +9,8 @@ import WorkspacesDetails from './Pages/WorkspacesDetails'
 import ChannelDetails from './Pages/ChannelDetails'
 import { saveTestDataWorkspaces, saveTestDataMessages, saveTestDataChannels, saveTestDataUsers, saveTestDataDirectMessages } from './helpers/testdata'
 import { users, workspaces, channels, messages, directMessages } from '../src/data/data.js'
+import NewWorkspaces from './Pages/NewWorkspaces.jsx'
+import NotFound from './Pages/404NotFound.jsx'
 function App() {
 
   saveTestDataWorkspaces(workspaces) // inicializa los datos de los espacios de trabajo
@@ -21,6 +23,10 @@ function App() {
   return (
     // <Route> siempre esta contenido dentro de Routes
     <Routes>
+      <Route path='/*' element={
+        <NotFound/>
+      }/>
+      
       <Route path='/' element={
         <Home/>
       }/>
@@ -55,6 +61,11 @@ function App() {
         <ChannelDetails/>  
       } />
       
+      <Route path ='/Workspaces/New' element={
+        <NewWorkspaces/>
+      } />
+
+
 
     </Routes>
   )
