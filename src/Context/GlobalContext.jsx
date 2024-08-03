@@ -23,8 +23,6 @@ export const GlobalContextProvider = ({ children }) => {
 
 export const useGlobalContextWorkspaces = () => useContext(GlobalContext);
 
-
-
 const handleCreateWorkspaces = (e) => {
   // TODO: Crear un nuevo Workspace
   // TODO: Actualizar el contexto de Workspaces para reflejar el nuevo Workspace

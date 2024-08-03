@@ -13,7 +13,7 @@ const NewWorkspaces = () => {
           Workspace Name:
           <input
             type="text"
-            value={workspaceName}
+            value='name'
             onChange={e => setWorkspaceName(e.target.value)}
             required
           />
@@ -24,7 +24,7 @@ const NewWorkspaces = () => {
           Channel name:
           <input
             type="text"
-            value={channel}
+            value='channel'
             onChange={e => setChannel(e.target.value)}
             required
           />
