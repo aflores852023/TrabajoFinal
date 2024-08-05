@@ -3,10 +3,10 @@
 
 
 export const users = [ 
-    { id: 1, username: 'alice', avatar: 'https://example.com/avatar1.png', status: 'online' },
-    { id: 2, username: 'bob', avatar: 'https://example.com/avatar2.png', status: 'offline' },
-    { id: 3, username: 'charlie', avatar: 'https://example.com/avatar3.png', status: 'away' },
-    { id: 4, username: 'dave', avatar: 'https://example.com/avatar4.png', status: 'busy' },
+    { id: 1, username: 'alice', avatar: '/img/picture2.jpg', status: 'online' },
+    { id: 2, username: 'bob', avatar: '/img/picture1.jpg', status: 'offline' },
+    { id: 3, username: 'charlie', avatar: '/img/picture3.jpg', status: 'away' },
+    { id: 4, username: 'dave', avatar: '/img/picture4.jpg', status: 'busy' },
   ];
   
   export const workspaces = [
@@ -24,13 +24,17 @@ export const users = [
     { id: 6, name: 'Marketing Outsider', workspaceId: 3  }
   ];
   
-  export  const messages = [
-    { id: 1, text: 'Hello, everyone!', senderId: 1, channelId: 1, timestamp: new Date() },
-    { id: 2, text: 'Hi Alice!', senderId: 2, channelId: 1, timestamp: new Date() },
-    { id: 3, text: 'How is the project going?', senderId: 3, channelId: 3, timestamp: new Date() },
-    { id: 4, text: 'We need to finish the design by Friday.', senderId: 4, channelId: 4, timestamp: new Date() },
-    { id: 5, text: 'I am working on the backend now.', senderId: 1, channelId: 5, timestamp: new Date() },
+  export const messages = [
+    { id: 1, text: 'Hello, everyone!', senderId: 1, channelId: 1, timestamp: new Date(), imageUrl: '/img/picture2.jpg', status: 'sent' },
+    { id: 2, text: 'Hi Alice!', senderId: 2, channelId: 1, timestamp: new Date(), imageUrl: '/img/picture1.jpg', status: 'sent' },
+    { id: 3, text: 'How is the project going?', senderId: 3, channelId: 3, timestamp: new Date(), imageUrl: '/img/picture2.jpg', status: 'sent' },
+    { id: 4, text: 'We need to finish the design by Friday.', senderId: 4, channelId: 4, timestamp: new Date(), imageUrl: '/img/picture1.jpg', status: 'sent' },
+    { id: 5, text: 'I am working on the backend now.', senderId: 1, channelId: 5, timestamp: new Date(), imageUrl: '/img/picture2.jpg', status: 'sent' },
+    { id: 5, text: 'I am working on the backend now.', senderId: 1, channelId: 2, timestamp: new Date(), imageUrl: '/img/picture3.jpg', status: 'sent' },
+    { id: 5, text: 'ok.', senderId: 1, channelId: 2, timestamp: new Date(), imageUrl: '/img/picture4.jpg', status: 'sent' },
   ];
+  
+  
   export const directMessages = [
     { id: 1, text: 'Hello, everyone!', senderId: 1, channelId: 1, timestamp: new Date() },
     { id: 2, text: 'Hi Alice!', senderId: 2, channelId: 1, timestamp: new Date() },

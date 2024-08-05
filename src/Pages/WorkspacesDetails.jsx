@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getWorkspacesChannelForId } from '../helpers/workspaces';
+import { getChannelsForWorkspace } from '../helpers/channels'; // Actualiza la importación
 import SlackChannels from '../components/SlackChannels';
 import SlackMessages from '../components/SlackMessages';
-import '../Pages/style.css';
+import './style.css';
 
 const WorkspacesDetails = () => {
   const { workspace_id } = useParams();
   const [channels, setChannels] = useState([]);
-  const [firstChannelId, setFirstChannelId] = useState(null);
+  const [selectedChannelId, setSelectedChannelId] = useState(null);
 
   useEffect(() => {
-    const fetchedChannels = getWorkspacesChannelForId(workspace_id);
+    const fetchedChannels = getChannelsForWorkspace(Number(workspace_id));
     setChannels(fetchedChannels);
     if (fetchedChannels.length > 0) {
-      setFirstChannelId(fetchedChannels[0].id);
+      setSelectedChannelId(fetchedChannels[0].id);
     }
   }, [workspace_id]);
 
+  const handleChannelSelect = (channelId) => {
+    setSelectedChannelId(channelId);
+  };
+
   return (
-    
-      <div className="container">
-        <SlackChannels channels={channels} />
-        {firstChannelId && <SlackMessages channelId={firstChannelId} />}
-      </div>
-    
+    <div className="container">
+      <SlackChannels channels={channels} onChannelSelect={handleChannelSelect} />
+      {selectedChannelId && <SlackMessages channelId={selectedChannelId} />}
+    </div>
   );
 };
 
