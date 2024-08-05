@@ -1,14 +1,31 @@
-/*  donde ocurre la mayor parte de la comunicación. */
+import React, { useState, useEffect } from 'react';
+import { getMessagesForChannel } from '../helpers/messages';
+import '../Pages/style.css'; 
 
-import React from 'react'
+const SlackMessages = ({ channelId }) => {
+  const [messages, setMessages] = useState([]);
 
-const SlackMessages = () => {
+  useEffect(() => {
+    if (channelId) {
+      const channelMessages = getMessagesForChannel(channelId);
+      setMessages(channelMessages);
+    }
+  }, [channelId]);
+
   return (
-    
-    <div>
-      <span>¡Hola otra vez! Mesages</span>
-      </div>
-  )
-}
+    <div className="messages">
+      <h2>Messages Channels</h2>
+      {messages.length > 0 ? (
+        <ul>
+          {messages.map((message, index) => (
+            <li key={index}>{message.text}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No messages available for this channel</p>
+      )}
+    </div>
+  );
+};
 
-export default SlackMessages
+export default SlackMessages;

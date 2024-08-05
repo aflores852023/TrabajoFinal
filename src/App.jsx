@@ -29,7 +29,7 @@ function App() {
       <Route path ='/DirectMessages' element={<DirectMessages/>}/>
       <Route path ='/Messages' element={<Messages/>}/>
       <Route path='/Workspaces/:workspace_id' element={<Workspaces/>} />
-      <Route path='/Workspaces/:workspace_id/WorkspacesDetails/:details_id' element={<WorkspacesDetails/>} />
+      <Route path='/Workspaces/:workspace_id/:channel_id' element={<WorkspacesDetails/>} />
       <Route path ='/Workspaces' element={<Workspaces />} />
       <Route path ='/Channels' element={<Channels />} />
       <Route path = '/ChannelDetails/:channel_id' element={<ChannelDetails/>} />      

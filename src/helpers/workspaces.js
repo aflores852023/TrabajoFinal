@@ -26,17 +26,24 @@ export const getChannelsToWorkspaces = () => {
 
 
 /**
- * Recupera los canales asociados a un ID de espacio de trabajo específico desde 
- * los canales almacenados.
+ * Obtiene los canales asociados a un ID de espacio de trabajo dado.
  *
  * @param {number} id - El ID del espacio de trabajo.
- * @return {Array} Un array de canales que pertenecen al espacio de trabajo con 
- * el ID especificado.
+ * @return {Array} Un arreglo de objetos de canal, o un arreglo con un objeto de 
+ * canal con el ID del espacio de trabajo 1 si no se encontraron canales coincidentes.
+ * el id de canal 1 es el geneeral y no es permitido eliminarlo
  */
 export const getWorkspacesChannelForId = (id) => {
-    const channels = getChannelsToWorkspaces(); 
-  return channels.filter(channel => Number(channel.workspaceId) === Number(id));
-};
+    const channels = getChannelsToWorkspaces();
+    const filteredChannels = channels.filter(channel => Number(channel.workspaceId) === Number(id));
+  
+    if (filteredChannels.length === 0) {
+      return [{ workspaceId: 1 }];
+    }
+  
+    return filteredChannels;
+  };
+  
 
 
 export const deleteWorkspaceForId = (id) => {

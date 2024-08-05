@@ -10,8 +10,9 @@ export const users = [
   ];
   
   export const workspaces = [
-    { id: 1, name: 'Workspace One', members: [1, 2, 3] },
-    { id: 2, name: 'Workspace Two', members: [2, 3, 4] },
+    { id: 1, name: 'Workspace 1', members: [1, 2, 3] },
+    { id: 2, name: 'Workspace 1', members: [2, 3, 4] },
+    { id: 3, name: 'Workspace 3', members: [2, 3, 4] },
   ];
   
   export const channels = [
@@ -19,7 +20,8 @@ export const users = [
     { id: 2, name: 'Random', workspaceId: 1 },
     { id: 3, name: 'Development', workspaceId: 2 },
     { id: 4, name: 'Design', workspaceId: 2 },
-    { id: 5, name: 'Marketing', workspaceId: 3 }
+    { id: 5, name: 'Marketing', workspaceId: 3 },
+    { id: 6, name: 'Marketing Outsider', workspaceId: 3  }
   ];
   
   export  const messages = [

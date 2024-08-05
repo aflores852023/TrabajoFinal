@@ -1,30 +1,30 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { getWorkspacesChannelForId } from '../helpers/workspaces';
+import SlackChannels from '../components/SlackChannels';
+import SlackMessages from '../components/SlackMessages';
+import '../Pages/style.css';
 
 const WorkspacesDetails = () => {
   const { workspace_id } = useParams();
-  const channels = getWorkspacesChannelForId(workspace_id);
+  const [channels, setChannels] = useState([]);
+  const [firstChannelId, setFirstChannelId] = useState(null);
+
+  useEffect(() => {
+    const fetchedChannels = getWorkspacesChannelForId(workspace_id);
+    setChannels(fetchedChannels);
+    if (fetchedChannels.length > 0) {
+      setFirstChannelId(fetchedChannels[0].id);
+    }
+  }, [workspace_id]);
 
   return (
-    <div>
-      <h1>Detalles del Workspace {workspace_id}</h1>
-      <h2>Channels:</h2>
-      {channels && channels.length > 0 ? (
-        <ul>
-          {channels.map(channel => (
-            <li key={channel.id}>
-              <div>{channel.name}</div>
-              <Link to={`/ChannelDetails/${channel.id}`}>
-                <button>Entrar</button>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No channels available for this workspace</p>
-      )}
-    </div>
+    
+      <div className="container">
+        <SlackChannels channels={channels} />
+        {firstChannelId && <SlackMessages channelId={firstChannelId} />}
+      </div>
+    
   );
 };
 
