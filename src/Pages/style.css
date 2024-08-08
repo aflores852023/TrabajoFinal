@@ -247,9 +247,8 @@ body {
 }
 
 .channels-container .back-button {
-  align-self: center; /* Centrará el botón dentro del contenedor de canales */
+  align-self: center;  
 }
-
 /* Media Queries para Responsividad */
 @media (max-width: 768px) {
   .home {
