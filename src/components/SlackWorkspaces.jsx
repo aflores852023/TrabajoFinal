@@ -7,11 +7,11 @@ const SlackWorkspaces = ({ workspace }) => {
 
  
   return (
-    <div className='home-List-Workspaces'>
+    <div className='workspaces-list'>
       <span>{name}</span>
     {/*   <Link to={'/WorkspacesDetails/' + id}> */}
     <Link to={`/Workspaces/${id}/${id}`}>
-        <button className='home-List-Workspaces button'>Open</button>
+        <button className='workspaces-list li'>Open</button>
       </Link>
     </div>
   );

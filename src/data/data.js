@@ -11,7 +11,7 @@ export const users = [
   
   export const workspaces = [
     { id: 1, name: 'Workspace 1', members: [1, 2, 3] },
-    { id: 2, name: 'Workspace 1', members: [2, 3, 4] },
+    { id: 2, name: 'Workspace 2', members: [2, 3, 4] },
     { id: 3, name: 'Workspace 3', members: [2, 3, 4] },
   ];
   
