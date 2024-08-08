@@ -4,6 +4,13 @@ export const getChannelsDetailsForId = (id) => {
 }
 
 
+// Función para obtener los canales de un workspace específico
+export const getChannelsForWorkspace = (workspaceId) => {
+    const channels = JSON.parse(localStorage.getItem('channels')) || [];
+    return channels.filter(channel => channel.workspaceId === workspaceId);
+  };
+  
+
 export const addChannel = (channel) => {
     const channels = JSON.parse(localStorage.getItem('channels')) || [];
     channels.push(channel);
