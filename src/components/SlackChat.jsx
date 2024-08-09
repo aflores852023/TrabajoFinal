@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../Pages/style.css';
+import { getNextMessageId } from '../helpers/messages';
 
 const SlackChat = ({ onSendMessage, channelId, senderId }) => {
   const [text, setText] = useState('');
@@ -21,12 +22,11 @@ const SlackChat = ({ onSendMessage, channelId, senderId }) => {
       return;
     }
 
-    // Obtener el último mensaje desde el localStorage para determinar el próximo ID
-    const storedMessages = JSON.parse(localStorage.getItem('messages')) || [];
-    const lastMessageId = storedMessages.length > 0 ? storedMessages[storedMessages.length - 1].id : 0;
+    // Obtener el próximo ID de mensaje
+    const newMessageId = getNextMessageId();
 
     const newMessage = {
-      id: lastMessageId + 1, // Nuevo ID basado en el último ID
+      id: newMessageId, // Usar el nuevo ID obtenido de helpers
       text: text,
       senderId: senderId,
       channelId: channelId,

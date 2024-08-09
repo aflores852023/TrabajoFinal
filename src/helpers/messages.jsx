@@ -18,3 +18,9 @@ export const saveMessage = (newMessage) => {
   // Guardar los mensajes en el local storage
   localStorage.setItem('messages', JSON.stringify(messages));
 };
+
+export const getNextMessageId = () => {
+  const storedMessages = JSON.parse(localStorage.getItem('messages')) || [];
+  const lastMessageId = storedMessages.length > 0 ? storedMessages[storedMessages.length - 1].id : 0;
+  return lastMessageId + 1;
+};
