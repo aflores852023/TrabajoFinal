@@ -30,8 +30,8 @@ export const users = [
     { id: 3, text: 'How is the project going?', senderId: 3, channelId: 3, timestamp: new Date(), imageUrl: '/img/picture2.jpg', status: 'sent' },
     { id: 4, text: 'We need to finish the design by Friday.', senderId: 4, channelId: 4, timestamp: new Date(), imageUrl: '/img/picture1.jpg', status: 'sent' },
     { id: 5, text: 'I am working on the backend now.', senderId: 1, channelId: 5, timestamp: new Date(), imageUrl: '/img/picture2.jpg', status: 'sent' },
-    { id: 5, text: 'I am working on the backend now.', senderId: 1, channelId: 2, timestamp: new Date(), imageUrl: '/img/picture3.jpg', status: 'sent' },
-    { id: 5, text: 'ok.', senderId: 1, channelId: 2, timestamp: new Date(), imageUrl: '/img/picture4.jpg', status: 'sent' },
+    { id: 6, text: 'I am working on the backend now.', senderId: 1, channelId: 2, timestamp: new Date(), imageUrl: '/img/picture3.jpg', status: 'sent' },
+    { id: 7, text: 'ok.', senderId: 1, channelId: 2, timestamp: new Date(), imageUrl: '/img/picture4.jpg', status: 'sent' },
   ];
   
   

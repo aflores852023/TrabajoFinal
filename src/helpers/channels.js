@@ -6,10 +6,14 @@
  * @param {number} workspaceId - El ID del espacio de trabajo.
  * @return {Array} Un arreglo de objetos de canal que pertenecen al ID de espacio de trabajo especificado.
  */
+// helpers/channels.js
 export const getChannelsForWorkspace = (workspaceId) => {
-    const channels = JSON.parse(localStorage.getItem('channels')) || [];
-    return channels.filter(channel => channel.workspaceId === workspaceId);
-  };
+  const channels = JSON.parse(localStorage.getItem('channels')) ;
+  /* console.log("Todos los canales:", channels);  */
+  const filteredChannels = channels.filter(channel => channel.workspaceId === workspaceId);
+  /* console.log(`Canales filtrados para el workspace ${workspaceId}:`, filteredChannels); */
+  return filteredChannels;
+}
 
 /**
  * Agrega un canal a la lista de canales almacenados en el almacenamiento local del navegador.

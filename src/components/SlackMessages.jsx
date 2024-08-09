@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { getMessagesForChannel } from '../helpers/messages';
+import React from 'react';
 import '../Pages/style.css'; 
 
-
-
-
-const SlackMessages = ({ channelId }) => {
-  const [messages, setMessages] = useState([]);
-
-  useEffect(() => {
-    if (channelId) {
-      const channelMessages = getMessagesForChannel(channelId);
-      setMessages(channelMessages);
-    }
-  }, [channelId]);
-
+const SlackMessages = ({ messages }) => {
   return (
     <div className="messages">
       <h2>Messages to channel</h2>
       {messages.length > 0 ? (
         <ul>
-          {messages.map((message, index) => (
-            <li key={index} className="message-item">
+          {messages.map((message) => (
+            <li key={message.id} className="message-item">
               <img src={message.imageUrl} alt={`User ${message.senderId}`} className="message-avatar" />
               <div className="message-content">
                 <div className="message-text">{message.text}</div>

@@ -1,14 +1,22 @@
 import '../Pages/style.css';
-import React, { useState } from 'react';
- 
-import { addChannel } from '../helpers/channels'; // Importa la función para agregar canales
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const SlackChannels = ({ channels, onChannelSelect }) => {
   const [isCreatingChannel, setIsCreatingChannel] = useState(false);
   const [newChannelName, setNewChannelName] = useState('');
-  const [localChannels, setLocalChannels] = useState(channels); // Usa un estado local para los canales
+  const [localChannels, setLocalChannels] = useState(channels);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localChannels.length > 0) {
+      // Verifica si ya se ha seleccionado un canal
+      if (localChannels[0].id !== onChannelSelect.currentChannelId) {
+        onChannelSelect(localChannels[0].id);
+      }
+    }
+  }, []); // Nota: Dependencias vacías para que solo se ejecute una vez
 
   const handleCreateChannelClick = () => {
     setIsCreatingChannel(true);
@@ -20,13 +28,28 @@ const SlackChannels = ({ channels, onChannelSelect }) => {
   };
 
   const handleCreateClick = () => {
+    if (newChannelName.trim() === '') {
+      alert('Channel name cannot be empty');
+      return;
+    }
+
+    // Generar un nuevo ID único para el canal
     const newChannel = {
-      id: localChannels.length + 1, // Generar un nuevo id de forma sencilla
+      id: localChannels.length > 0 ? Math.max(...localChannels.map(c => c.id)) + 1 : 1,
       name: newChannelName,
-      workspaceId: 1, // Asume que es el workspace con id 1 para este ejemplo
     };
-    addChannel(newChannel); // Guarda el nuevo canal en el local storage
-    setLocalChannels([...localChannels, newChannel]); // Actualiza el estado local
+
+    // Actualizar el estado local con el nuevo canal
+    const updatedChannels = [...localChannels, newChannel];
+    setLocalChannels(updatedChannels);
+
+    // Guardar la nueva lista de canales en el local storage
+    localStorage.setItem('channels', JSON.stringify(updatedChannels));
+
+    // Seleccionar el nuevo canal creado
+    onChannelSelect(newChannel.id);
+
+    // Resetear el formulario
     setIsCreatingChannel(false);
     setNewChannelName('');
   };
