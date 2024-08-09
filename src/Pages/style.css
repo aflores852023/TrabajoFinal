@@ -41,27 +41,44 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
-  margin-bottom: 5px;
-  
+  margin-bottom: 10px;
+  width: auto;
+  height: auto;
 }
 
 .workspace-info {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .workspace-icon {
-  width: 10%; 
-  height: 10%;
+  width: 40px; 
+  height: 40px;
   border-radius: 50%;
   margin-right: 10px;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
+/* Responsividad para workspace-icon */
+@media (max-width: 768px) {
+  .workspace-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .workspace-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
 
 .workspace-name {
   font-size: 14px;
   font-weight: bold;
+  margin-right: auto;
 }
 
 .workspace-button {
@@ -69,6 +86,7 @@
   color: white;
   border: none;
   padding: 6px 12px;
+  margin-left: 10px;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -85,14 +103,16 @@
 }
 
 .create-workspace-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 30px 40px;
+  font-size: 20px;
   background-color: #007bff;
   color: white;
   border: 2px dashed #007bff;
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
+  height: calc(100vh - 600px);
+  padding-top: 10px;
 }
 
 .create-workspace-button:hover {
@@ -143,7 +163,7 @@
 }
 
 .channels li:hover {
-  background-color: #3a3e44;
+  background-color: #b3b9c2;
 }
 
 .channels a {
@@ -202,6 +222,7 @@
   margin: 0;
   flex-grow: 1;
   overflow-y: auto;
+  max-height: calc(100vh - 250px);  
 }
 
 .messages li {
@@ -209,6 +230,8 @@
   align-items: flex-start;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  width: 80%;    
+  background-color: #b9b7b1;
 }
 
 .messages li:last-child {
@@ -223,16 +246,23 @@
 }
 
 .message-content {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;  
+  max-width: 80%;  
+  overflow-wrap: break-word;  
 }
 
 .message-text {
   font-size: 14px;
   margin-bottom: 5px;
-}
+  white-space: pre-wrap;  
+  word-wrap: break-word;  
+  max-width: 100%;
+  width: 100%;
+  }
 
 .message-info {
   display: flex;
@@ -266,25 +296,10 @@
 }
 
 .channels-container .back-button {
-  align-self: center;  
+  align-self: center;
 }
 
 /* Media Queries para Responsividad */
-/* Responsividad para workspace-icon */
-@media (max-width: 768px) {
-  .workspace-icon {
-    width: 8%;
-    height: 8%;
-  }
-}
-
-@media (max-width: 480px) {
-  .workspace-icon {
-    width: 30px;
-    height: 30px;
-  }
-}
-
 @media (max-width: 768px) {
   .home {
     width: 90%;
@@ -299,12 +314,24 @@
     font-size: 20px;
   }
 
+  .workspace-icon {
+    width: 20px;  
+    height: 20px;
+  }
   .home-subtitle {
     font-size: 16px;
   }
 
   .workspaces-list li {
     padding: 8px;
+  }
+
+  .create-workspace-button {
+    padding: 6px 12px;
+    width: 50%;
+    height: 50%;
+    font-size: 12px;
+    padding-right: 50px;
   }
 
   .container {
@@ -314,10 +341,6 @@
   .channels-container {
     width: 100%;
     padding: 5px;
-  }
-
-  .channels li {
-    padding: 8px;
   }
 
   .messages {
@@ -339,10 +362,22 @@
   .workspace-button {
     padding: 4px 8px;
   }
+
+  .message-input {
+    padding: 6px;
+  }
+
+  .send-button {
+    padding: 6px 12px;
+  }
+ .message-attachment {
+ display: none;  /* Oculta el botón en pantallas pequeñas */
+  }
+  
 }
 
 @media (max-width: 480px) {
-  .home-Logo img {
+  .home-logo img {
     width: 60px;
   }
 
@@ -362,12 +397,10 @@
   .workspaces-list li {
     padding: 6px;
   }
-
-  .channels li {
-    padding: 6px;
+  .workspace-icon {
+    display: none;
   }
-
-  .messages li {
+  .channels li {
     padding: 6px;
   }
 
@@ -385,6 +418,14 @@
   .workspace-button {
     padding: 6px 12px;
     align-self: flex-end;
+  }
+
+  .message-input {
+    padding: 4px;
+  }
+
+  .send-button {
+    padding: 4px 8px;
   }
 }
 
@@ -407,7 +448,7 @@
 .message-form {
   display: flex;
   align-items: center;
-  margin-top: auto; /* Esto hace que el formulario esté pegado al fondo */
+  margin-top: auto;
   padding: 10px;
   border-top: 1px solid #ddd;
 }
@@ -454,13 +495,12 @@
   margin-right: 10px;
 }
 
-.message-content {
-  display: flex;
-  flex-direction: column;
-}
-
 .message-text {
+  font-size: 14px;
   margin-bottom: 5px;
+  white-space: pre-wrap; /* Mantiene los saltos de línea y envuelve el texto */
+  word-wrap: break-word; /* Rompe las palabras largas */
+  max-width: 100%
 }
 
 .message-timestamp,
