@@ -1,22 +1,13 @@
 import '../Pages/style.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { addChannel, getNextChannelId } from '../helpers/channels';
 
-const SlackChannels = ({ channels, onChannelSelect }) => {
+const SlackChannels = ({ channels, workspaceId, onChannelSelect, onAddChannel }) => {
   const [isCreatingChannel, setIsCreatingChannel] = useState(false);
   const [newChannelName, setNewChannelName] = useState('');
-  const [localChannels, setLocalChannels] = useState(channels);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (localChannels.length > 0) {
-      // Verifica si ya se ha seleccionado un canal
-      if (localChannels[0].id !== onChannelSelect.currentChannelId) {
-        onChannelSelect(localChannels[0].id);
-      }
-    }
-  }, []); // Nota: Dependencias vacías para que solo se ejecute una vez
 
   const handleCreateChannelClick = () => {
     setIsCreatingChannel(true);
@@ -33,18 +24,20 @@ const SlackChannels = ({ channels, onChannelSelect }) => {
       return;
     }
 
-    // Generar un nuevo ID único para el canal
+    // Obtener el siguiente ID de canal
+    const newChannelId = getNextChannelId();
+
     const newChannel = {
-      id: localChannels.length > 0 ? Math.max(...localChannels.map(c => c.id)) + 1 : 1,
+      id: newChannelId,
       name: newChannelName,
+      workspaceId: workspaceId, // Agregar workspaceId al canal
     };
 
-    // Actualizar el estado local con el nuevo canal
-    const updatedChannels = [...localChannels, newChannel];
-    setLocalChannels(updatedChannels);
+    // Llamar a la función addChannel para agregar el canal al almacenamiento local
+    const updatedChannels = addChannel(newChannel);
 
-    // Guardar la nueva lista de canales en el local storage
-    localStorage.setItem('channels', JSON.stringify(updatedChannels));
+    // Actualizar la lista de canales en el componente padre
+    onAddChannel(newChannel);
 
     // Seleccionar el nuevo canal creado
     onChannelSelect(newChannel.id);
@@ -62,9 +55,9 @@ const SlackChannels = ({ channels, onChannelSelect }) => {
     <div className="channels-container">
       <div className="channels">
         <h2>Channels</h2>
-        {localChannels.length > 0 ? (
+        {channels.length > 0 ? (
           <ul>
-            {localChannels.map(channel => (
+            {channels.map(channel => (
               <li key={channel.id} onClick={() => onChannelSelect(channel.id)}>
                 <div>{channel.name}</div>
               </li>

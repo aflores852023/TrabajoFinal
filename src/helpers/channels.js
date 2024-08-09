@@ -21,8 +21,20 @@ export const getChannelsForWorkspace = (workspaceId) => {
  * @param {Object} canal - El objeto de canal a agregar.
  * @return {void} Esta función no devuelve nada.
  */
-export const addChannel = (channel) => {
-    const channels = JSON.parse(localStorage.getItem('channels')) || [];
-    channels.push(channel);
-    localStorage.setItem('channels', JSON.stringify(channels));
-  };
+// ../helpers/channels.js
+
+export const addChannel = (newChannel) => {
+  const channels = JSON.parse(localStorage.getItem('channels')) || [];
+  channels.push(newChannel);
+  localStorage.setItem('channels', JSON.stringify(channels));
+  return channels;
+};
+
+export const getNextChannelId = () => {
+  const channels = JSON.parse(localStorage.getItem('channels')) || [];
+  if (channels.length === 0) {
+    return 1;
+  }
+  const lastChannelId = Math.max(...channels.map(channel => channel.id));
+  return lastChannelId + 1;
+};

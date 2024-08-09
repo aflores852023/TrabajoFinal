@@ -1,4 +1,4 @@
-const messages = JSON.parse(localStorage.getItem('messages')) || [];
+const messages = JSON.parse(localStorage.getItem('messages'));
 /**
  * Recupera mensajes para un canal específico en función del ID del canal.
  *
@@ -6,12 +6,8 @@ const messages = JSON.parse(localStorage.getItem('messages')) || [];
  * @return {Array} Un arreglo de mensajes filtrados y mapeados según el ID del canal.
  */
 export const getMessagesForChannel = (channelId) => {
-  return messages
-    .filter(message => message.channelId === channelId)
-    .map(message => ({
-      ...message,
-      timestamp: new Date(message.timestamp),
-      
-    })
-  )
+  return messages.filter(message => message.channelId === channelId)
+    .map(message => ({...message,timestamp: new Date(message.timestamp),
+     
+    }))
 };

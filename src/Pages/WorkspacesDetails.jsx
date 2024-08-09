@@ -8,22 +8,30 @@ import './style.css';
 
 const WorkspacesDetails = () => {
   const { workspace_id } = useParams();
+  const [channels, setChannels] = useState(() => getChannelsForWorkspace(Number(workspace_id)));
 
-  // Obtener los canales directamente
-  const channels = getChannelsForWorkspace(Number(workspace_id));
-
-  // Seleccionar el primer canal de la lista y obtener los mensajes
   const [selectedChannelId, setSelectedChannelId] = useState(channels.length > 0 ? channels[0].id : null);
   const [messages, setMessages] = useState(selectedChannelId ? getMessagesForChannel(selectedChannelId) : []);
 
   const handleChannelSelect = (channelId) => {
     setSelectedChannelId(channelId);
-    setMessages(getMessagesForChannel(channelId)); // Actualizar mensajes cuando se selecciona un canal
+    setMessages(getMessagesForChannel(channelId));
+  };
+
+  const handleAddChannel = (newChannel) => {
+    const updatedChannels = [...channels, newChannel];
+    setChannels(updatedChannels);
+    setSelectedChannelId(newChannel.id);
   };
 
   return (
     <div className="container">
-      <SlackChannels channels={channels} onChannelSelect={handleChannelSelect} />
+      <SlackChannels 
+        channels={channels} 
+        workspaceId={Number(workspace_id)} // Pasa workspaceId como prop
+        onChannelSelect={handleChannelSelect} 
+        onAddChannel={handleAddChannel} 
+      />
       {selectedChannelId && <SlackMessages messages={messages} />}
     </div>
   );
