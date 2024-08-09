@@ -1,28 +1,35 @@
 import React, { useState } from 'react';
 import '../Pages/style.css';
-const SlackChat = ({ onSendMessage }) => {
-const [text, setText] = useState('');
-const [attachment, setAttachment] = useState(null);
 
-const handleTextChange = (e) => {
+const SlackChat = ({ onSendMessage, channelId, senderId }) => {
+  const [text, setText] = useState('');
+  const [attachment, setAttachment] = useState(null);
+
+  const handleTextChange = (e) => {
     setText(e.target.value);
-};
+  };
 
-const handleAttachmentChange = (e) => {
-      setAttachment(e.target.files[0]);
-};
+  const handleAttachmentChange = (e) => {
+    setAttachment(e.target.files[0]);
+  };
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (text.trim() === '' && !attachment) {
-       alert('Message cannot be empty');
+      alert('Message cannot be empty');
       return;
     }
 
+    // Obtener el último mensaje desde el localStorage para determinar el próximo ID
+    const storedMessages = JSON.parse(localStorage.getItem('messages')) || [];
+    const lastMessageId = storedMessages.length > 0 ? storedMessages[storedMessages.length - 1].id : 0;
+
     const newMessage = {
-      id: Date.now(),
+      id: lastMessageId + 1, // Nuevo ID basado en el último ID
       text: text,
+      senderId: senderId,
+      channelId: channelId,
       timestamp: new Date(),
       imageUrl: '/img/logo.png', // Imagen predeterminada
       status: 'sent',

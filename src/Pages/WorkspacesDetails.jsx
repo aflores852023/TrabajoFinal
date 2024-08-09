@@ -4,7 +4,7 @@ import { getChannelsForWorkspace } from '../helpers/channels';
 import { getMessagesForChannel, saveMessage } from '../helpers/messages';
 import SlackChannels from '../components/SlackChannels';
 import SlackMessages from '../components/SlackMessages';
-import SlackChat from '../components/SlackChat';
+import SlackChat from '../components/SlackChat'; // Cambiado de MessageForm a SlackChat
 import './style.css';
 
 const WorkspacesDetails = () => {
@@ -15,7 +15,6 @@ const WorkspacesDetails = () => {
 
   useEffect(() => {
     if (selectedChannelId) {
-      // Obtener mensajes desde la función de helpers
       const channelMessages = getMessagesForChannel(selectedChannelId);
       setMessages(channelMessages);
     }
@@ -32,10 +31,7 @@ const WorkspacesDetails = () => {
   };
 
   const handleSendMessage = (newMessage) => {
-    // Guardar el nuevo mensaje usando la función de helpers
     saveMessage(newMessage);
-
-    // Actualizar la lista de mensajes en el estado
     setMessages(prevMessages => [...prevMessages, newMessage]);
   };
 
@@ -49,7 +45,7 @@ const WorkspacesDetails = () => {
       />
       <div className="messages-container">
         {selectedChannelId && <SlackMessages messages={messages} />}
-        {selectedChannelId && <SlackChat onSendMessage={handleSendMessage} />}
+        {selectedChannelId && <SlackChat onSendMessage={handleSendMessage} channelId={selectedChannelId} senderId={1} />}
       </div>
     </div>
   );
