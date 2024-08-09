@@ -1,84 +1,103 @@
-/* Estilos generales */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 /* Contenedor principal de Home */
 .home {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  max-width: 600px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-.home-Logo img {
-  width: 100px;
+.home-logo {
   margin-bottom: 20px;
 }
 
-.home-Title {
+.slack-logo {
+  width: 100px; 
+}
+
+.home-welcome {
   font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.home-Title-Down {
-  font-size: 16px;
-  color: #555;
   margin-bottom: 20px;
 }
 
-/* Lista de workspaces */
+.home-subtitle {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
 .workspaces-list {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
 }
 
-.workspaces-list li {
-  background-color: #f1f3f5;
-  border: 1px solid #dee2e6;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.workspace-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-bottom: 5px;
+  
 }
 
-.workspaces-list li:hover {
-  background-color: #e9ecef;
+.workspace-info {
+  display: flex;
+  align-items: center;
 }
 
-.workspaces-list a {
-  text-decoration: none;
-  color: black;
-  display: block;
+.workspace-icon {
+  width: 10%; 
+  height: 10%;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover; 
 }
 
-.home-Create-Workspace.button {
+
+.workspace-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.workspace-button {
   background-color: #007bff;
   color: white;
   border: none;
+  padding: 6px 12px;
   border-radius: 4px;
-  padding: 10px 20px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.2s;
 }
 
-.home-Create-Workspace.button:hover {
+.workspace-button:hover {
   background-color: #0056b3;
+}
+
+.create-workspace-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.create-workspace-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: 2px dashed #007bff;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.create-workspace-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
 /* Estilos para SlackChannels y SlackMessages */
@@ -249,24 +268,39 @@ body {
 .channels-container .back-button {
   align-self: center;  
 }
+
 /* Media Queries para Responsividad */
+/* Responsividad para workspace-icon */
+@media (max-width: 768px) {
+  .workspace-icon {
+    width: 8%;
+    height: 8%;
+  }
+}
+
+@media (max-width: 480px) {
+  .workspace-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 @media (max-width: 768px) {
   .home {
     width: 90%;
     padding: 15px;
   }
 
-  .home-Title {
+  .home-logo img {
+    width: 80px;
+  }
+
+  .home-welcome {
     font-size: 20px;
   }
 
-  .home-Title-Down {
-    font-size: 14px;
-  }
-
-  .home-Create-Workspace.button {
-    font-size: 14px;
-    padding: 8px 16px;
+  .home-subtitle {
+    font-size: 16px;
   }
 
   .workspaces-list li {
@@ -301,19 +335,23 @@ body {
   .back-button {
     width: 100%;
   }
+
+  .workspace-button {
+    padding: 4px 8px;
+  }
 }
 
 @media (max-width: 480px) {
   .home-Logo img {
-    width: 80px;
+    width: 60px;
   }
 
-  .home-Title {
+  .home-welcome {
     font-size: 18px;
   }
 
-  .home-Title-Down {
-    font-size: 12px;
+  .home-subtitle {
+    font-size: 14px;
   }
 
   .home-Create-Workspace.button {
@@ -332,8 +370,23 @@ body {
   .messages li {
     padding: 6px;
   }
-}
 
+  .workspace-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6px;
+  }
+
+  .workspace-name {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .workspace-button {
+    padding: 6px 12px;
+    align-self: flex-end;
+  }
+}
 
 /* Estilos del form para el chat */
 

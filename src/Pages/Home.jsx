@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
-import { getWorkspaces } from '../helpers/workspaces'; // src\helpers\workspaces.js
-import SlackWorkspacesList from '../components/SlackWorkspacesList'; // src\components\SlackWorkspacesList.jsx
+import { getWorkspaces } from '../helpers/workspaces';
+import SlackWorkspacesList from '../components/SlackWorkspacesList';
 import { useGlobalContextWorkspaces } from '../Context/GlobalContext';
 import { Link } from 'react-router-dom';
 import './style.css'
 
 const Home = () => {
   const workspaces = getWorkspaces();
-  const { workspaces: contextWorkspaces } = useGlobalContextWorkspaces(); // Extrae workspaces del contexto
+  const { workspaces: contextWorkspaces } = useGlobalContextWorkspaces();
 
-  // Usa los workspaces del contexto si están disponibles, de lo contrario usa los locales
   const [workspace, setWorkspace] = useState(contextWorkspaces ? contextWorkspaces[0] : workspaces[0]);
 
   return (
-    <>
-      <div className='home'>
-        <div className='home-Logo'>
-          <img src='img/logo.png' alt='logo' />
-        </div>
-        <div className='home-Title'>Welcome to Clone Slack Application</div>
-        <div className='home-Title-Down'>Choose a workspace below to get back to work with your team. {workspace ? workspace.name : 'No workspace selected'}</div>
-        <SlackWorkspacesList workspaces={workspaces} />
-        <Link to={'/Workspaces/New'}>
-          <button className='home-Create-Workspace button'>Create Workspace</button>
-        </Link>
+    <div className='home'>
+      <div className='home-logo'>
+        <img src='/img/logo.png' className='slack-logo' />
       </div>
-    </>
+      <h1 className='home-welcome'>Welcome to Clone_Slack</h1>
+      <h2 className='home-subtitle'>Workspaces List</h2>
+
+      <SlackWorkspacesList workspaces={workspaces} />
+
+      <Link to={'/Workspaces/New'}>
+        <div className='create-workspace-container'>
+          <button className='create-workspace-button'>Create Workspace</button>
+        </div>
+      </Link>
+    </div>
   );
 };
 
