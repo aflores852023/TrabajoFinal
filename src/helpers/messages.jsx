@@ -11,3 +11,10 @@ export const getMessagesForChannel = (channelId) => {
      
     }))
 };
+export const saveMessage = (newMessage) => {
+  // Agregar el nuevo mensaje al array de mensajes
+  messages.push(newMessage);
+  
+  // Guardar los mensajes en el local storage
+  localStorage.setItem('messages', JSON.stringify(messages));
+};
