@@ -82,7 +82,7 @@
 }
 
 .workspace-button {
-  background-color: #007bff;
+  background-color: #611f69;
   color: white;
   border: none;
   padding: 6px 12px;
@@ -92,7 +92,7 @@
 }
 
 .workspace-button:hover {
-  background-color: #0056b3;
+  background-color: #cc15e0;
 }
 
 .create-workspace-container {
@@ -105,9 +105,8 @@
 .create-workspace-button {
   padding: 30px 40px;
   font-size: 20px;
-  background-color: #007bff;
+  background-color: #611f69;
   color: white;
-  border: 2px dashed #007bff;
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
@@ -116,8 +115,8 @@
 }
 
 .create-workspace-button:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: #cc15e0;
+  
 }
 
 /* Estilos para SlackChannels y SlackMessages */
@@ -132,7 +131,7 @@
   display: flex;
   flex-direction: column;
   width: 250px;
-  background-color: #2c2f33;
+  background-color: #4a154b;
   color: white;
   padding: 10px;
   box-sizing: border-box;
@@ -173,19 +172,21 @@
 }
 
 .create-channel-button, .cancel-channel-button {
-  background-color: #7289da;
+  background-color: #611f69;
   color: white;
-  border: none;
+  border: 8PX;
   border-radius: 4px;
   padding: 10px;
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
   transition: background-color 0.2s;
+  font-weight: bolder;
+
 }
 
 .create-channel-button:hover, .cancel-channel-button:hover {
-  background-color: #5a6fb5;
+  background-color: #cc15e0;
 }
 
 .create-channel-form {
@@ -217,7 +218,6 @@
 }
 
 .messages ul {
-  list-style: none;
   padding: 0;
   margin: 0;
   flex-grow: 1;
@@ -230,8 +230,8 @@
   align-items: flex-start;
   padding: 10px;
   border-bottom: 1px solid #ccc;
-  width: 80%;    
-  background-color: #b9b7b1;
+  width: 90%;    
+  
 }
 
 .messages li:last-child {
@@ -251,8 +251,10 @@
   padding: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   word-wrap: break-word;  
-  max-width: 80%;  
+  max-width: 100%;  
   overflow-wrap: break-word;  
+  font-size: 14px;
+  
 }
 
 .message-text {
@@ -280,23 +282,107 @@
 }
 
 .back-button {
-  background-color: #7289da;
+  background-color: #611f69;
   color: white;
-  border: none;
+  border: 8PX;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
   transition: background-color 0.2s;
+  margin-bottom: 20px;
+  font-weight: bolder;
 }
 
 .back-button:hover {
-  background-color: #5a6fb5;
+  background-color: #cc15e0;
 }
 
 .channels-container .back-button {
   align-self: center;
+}
+
+
+/* Estilos del form para el chat */
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+}
+
+.message-form {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.message-input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.message-attachment {
+  margin-right: 10px;
+}
+
+.send-button {
+  padding: 8px 16px;
+  background-color: #611f69;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.send-button:hover {
+  background-color: #cc15e0;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message-text {
+  font-size: 14px;
+  margin-bottom: 5px;
+  white-space: pre-wrap;  
+  word-wrap: break-word; 
+ 
+}
+
+.message-timestamp,
+.message-status {
+  font-size: 12px;
+  color: #999;
 }
 
 /* Media Queries para Responsividad */
@@ -427,84 +513,4 @@
   .send-button {
     padding: 4px 8px;
   }
-}
-
-/* Estilos del form para el chat */
-
-.container {
-  display: flex;
-  height: 100vh;
-}
-
-.messages-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 20px;
-  background-color: #f4f4f4;
-  overflow-y: auto;
-}
-
-.message-form {
-  display: flex;
-  align-items: center;
-  margin-top: auto;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-}
-
-.message-input {
-  flex: 1;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  margin-right: 10px;
-}
-
-.message-attachment {
-  margin-right: 10px;
-}
-
-.send-button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.send-button:hover {
-  background-color: #0056b3;
-}
-
-.message-item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  background-color: #fff;
-  margin-bottom: 10px;
-  border-radius: 8px;
-}
-
-.message-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.message-text {
-  font-size: 14px;
-  margin-bottom: 5px;
-  white-space: pre-wrap; /* Mantiene los saltos de línea y envuelve el texto */
-  word-wrap: break-word; /* Rompe las palabras largas */
-  max-width: 100%
-}
-
-.message-timestamp,
-.message-status {
-  font-size: 12px;
-  color: #999;
 }
