@@ -553,10 +553,9 @@
   padding-top: 10px;
 }
 
-.create-workspace-button:hover {
+.create-workspace-button_in_worskpace:hover {
   background-color: #cc15e0;
 }
-
 
 .create-workspace-button_back_button {
   width: 30%;
@@ -573,4 +572,54 @@
 
 .create-workspace-button_back_button:hover {
   background-color: #cc15e0;
+}
+
+
+@media (max-width: 768px) {
+  .create-workspace-form {
+    padding: 15px;
+  }
+
+  .form-label {
+    font-size: 14px;
+  }
+
+  .form-input {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .create-workspace-button_in_worskpace,
+  .create-workspace-button_back_button {
+    padding: 10px 16px;
+    font-size: 14px;
+    width: 50%; 
+    height: auto; 
+
+        }
+}
+
+
+@media (max-width: 480px) {
+  .create-workspace-form {
+    padding: 10px;
+  }
+
+  .form-label {
+    font-size: 12px;
+  }
+
+  .form-input {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .create-workspace-button_in_worskpace,
+  .create-workspace-button_back_button {
+    padding: 8px 12px;
+    font-size: 12px;
+    width: 30%;
+    width: 100%; 
+    height: auto; 
+  }
 }
