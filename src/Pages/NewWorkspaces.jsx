@@ -1,137 +1,71 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useGlobalContextWorkspaces } from '../Context/GlobalContext';
+import { addChannel, getNextChannelId } from '../helpers/channels';
+import { getLastWorkspaceId } from '../helpers/workspaces';
 
 const NewWorkspaces = () => {
   const [workspaceName, setWorkspaceName] = useState('');
-  const [selectedMembers, setSelectedMembers] = useState([]);
-  const [icon, setIcon] = useState(null);
-  const [users, setUsers] = useState([]);
-
-  const { handleCreateWorkspaces } = useGlobalContextWorkspaces();
-
-  // Cargar usuarios del localStorage al montar el componente
-  useEffect(() => {
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    setUsers(storedUsers);
-  }, []);
+  const navigate = useNavigate();
+  const { handleCreateWorkspaces, workspaces } = useGlobalContextWorkspaces();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newWorkspaceId = getLastWorkspaceId(workspaces) + 1;
+
     const newWorkspace = {
-      id: Date.now(),  // Generar un ID único para el workspace
+      id: newWorkspaceId,
       name: workspaceName,
-      members: selectedMembers,
-      icon: icon ? URL.createObjectURL(icon) : null, // Crear una URL temporal para el icono
+      icon: '/img/logoworkspace.jpg',
+      members: [1, 2, 3],
     };
+
+    const generalChannel = {
+      id: getNextChannelId(),
+      name: 'General',
+      workspaceId: newWorkspaceId,
+    };
+    addChannel(generalChannel);
 
     handleCreateWorkspaces(newWorkspace);
 
-    // Limpiar el formulario después de la creación
     setWorkspaceName('');
-    setSelectedMembers([]);
-    setIcon(null);
+
+    navigate('/');
   };
 
-  const handleIconChange = (e) => {
-    setIcon(e.target.files[0]);
-  };
-
-  const handleMemberChange = (e) => {
-    const value = Array.from(e.target.selectedOptions, option => option.value);
-    setSelectedMembers(value);
+  const handleBackClick = () => {
+    navigate('/');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Create Workspace</h2>
-      <div>
-        <label>
-          Workspace Name:
+    <div className="home"> {/* Usar la clase home para mantener el diseño centrado */}
+      <div className="home-logo">
+        <img src="/img/logo_workspaces.jpeg" alt="Workspace Icon" className="slack-logo" />
+      </div>
+      <h2 className="home-welcome">Create New Workspace</h2>
+      <form onSubmit={handleSubmit} className="create-workspace-form">
+        <div className="form-group">
+          <label htmlFor="workspaceName" className="form-label">Workspace Name:</label>
           <input
             type="text"
+            id="workspaceName"
+            className="form-input"
             value={workspaceName}
-            onChange={e => setWorkspaceName(e.target.value)}
+            onChange={(e) => setWorkspaceName(e.target.value)}
             required
           />
-        </label>
-      </div>
-      <div>
-        <label>
-          Members:
-          <select
-            multiple
-            value={selectedMembers}
-            onChange={handleMemberChange}
-            required
-          >
-            {users.map(user => (
-              <option key={user.id} value={user.username}>
-                {user.username}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-      <div>
-        <label>
-          Workspace Icon:
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleIconChange}
-          />
-        </label>
-      </div>
-      <div>
-        <button type="submit">Create Workspace</button>
-      </div>
-    </form>
+        </div>
+        <div className="form-group">
+          <button type="submit" className="create-workspace-button_in_worskpace">Create Workspace</button>
+        </div>
+      </form>
+      <button className="create-workspace-button_back_button " onClick={handleBackClick}>
+        Back to Workspaces List
+      </button>
+    </div>
   );
 };
 
 export default NewWorkspaces;
-
-/* import React from 'react'
-
-import { useGlobalContextWorkspaces } from '../Context/GlobalContext';
-
-const NewWorkspaces = () => {
-    const {handleCreateWorkspaces} = useGlobalContextWorkspaces();
-      
-  return (
-      <form onSubmit={handleCreateWorkspaces}>
-        <h2>Create Workspace</h2>
-        <div>
-        <label>
-          Workspace Name:
-          <input
-            type="text"
-            value='name'
-            onChange={e => setWorkspaceName(e.target.value)}
-            required
-          />
-        </label>
-        </div>
-        <div> 
-        <label>
-          Channel name:
-          <input
-            type="text"
-            value='channel'
-            onChange={e => setChannel(e.target.value)}
-            required
-          />
-        </label>
-        </div>
-        <div>
-          <button type="submit">Create Workspace</button>
-        </div>
-
-      </form>
-    );
-  }
-    */
-
-
-/* export default NewWorkspaces */

@@ -52,3 +52,9 @@ export const deleteWorkspaceForId = (id) => {
     workspaces.splice(index, 1);
     localStorage.setItem('workspaces', JSON.stringify(workspaces));
 }
+
+
+
+export const getLastWorkspaceId = (workspaces) => {
+  return workspaces.length > 0 ? Math.max(...workspaces.map(ws => ws.id)) : 0;
+};

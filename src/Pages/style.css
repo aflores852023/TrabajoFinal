@@ -514,3 +514,63 @@
     padding: 4px 8px;
   }
 }
+
+/* Estilos para el formulario de creación de Workspaces */
+.create-workspace-form {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 16px;
+  color: #611f69;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.create-workspace-button_in_worskpace {
+  padding: 30px 40px;
+  font-size: 20px;
+  background-color: #611f69;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  height: calc(100vh - 600px);
+  padding-top: 10px;
+}
+
+.create-workspace-button:hover {
+  background-color: #cc15e0;
+}
+
+
+.create-workspace-button_back_button {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #611f69;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.create-workspace-button_back_button:hover {
+  background-color: #cc15e0;
+}
